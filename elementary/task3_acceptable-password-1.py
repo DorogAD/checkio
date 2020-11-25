@@ -1,5 +1,6 @@
-'''
- You are at the beginning of a password series. Every mission is based on the previous one. Going forward the missions will become slightly more complex.
+"""
+You are at the beginning of a password series. Every mission is based on the previous one.
+Going forward the missions will become slightly more complex.
 
 In this mission, you need to create a password verification function.
 
@@ -10,7 +11,8 @@ The verification condition is:
 Input: A string.
 
 Output: A bool. 
-'''
+"""
+
 
 def is_acceptable_password(password: str) -> bool:
     return True if len(password) > 6 else False
