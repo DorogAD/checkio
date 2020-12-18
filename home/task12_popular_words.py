@@ -26,7 +26,6 @@ def popular_words(text: str, words: list) -> dict:
     return res_dict
 
 
-
 if __name__ == '__main__':
     print("Example:")
     print(popular_words('''
