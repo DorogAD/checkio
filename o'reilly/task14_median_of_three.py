@@ -15,7 +15,7 @@ def median_three(els) -> Iterable[int]:
         if i == 0 or i == 1:
             new.append(els[i])
         else:
-            new.append((els[i] + els[i - 2]) // 2)
+            new.append((els[i] + els[i - 1] + els[i - 2]) // 3)
     return new
 
 
