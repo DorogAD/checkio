@@ -10,11 +10,11 @@ Output: The product of the digits as an integer.
 
 
 def checkio(number: int) -> int:
-    sum = 1
+    result = 1
     for i in str(number):
         if int(i) != 0:
-            sum *= int(i)
-    return sum
+            result *= int(i)
+    return result
 
 
 if __name__ == '__main__':
