@@ -12,11 +12,12 @@ Input: Two arguments. Both are strings.
 
 Output: Bool.
 """
+import re
 
 
 def unix_match(filename: str, pattern: str) -> bool:
-    # your code here
-    return filename == pattern
+    re_pattern = pattern.replace('.', '\.').replace('*', '.*').replace('?', '.{1}')
+    return bool(re.match(re_pattern, filename))
 
 
 if __name__ == '__main__':
