@@ -16,9 +16,17 @@ Coords = List[Tuple[int, int]]
 
 
 def similar_triangles(coords_1: Coords, coords_2: Coords) -> bool:
-
-    # your code here
-    return False
+    a1 = ((coords_1[1][0] - coords_1[0][0]) ** 2 + (coords_1[1][1] - coords_1[0][1]) ** 2) ** 0.5
+    b1 = ((coords_1[2][0] - coords_1[1][0]) ** 2 + (coords_1[2][1] - coords_1[1][1]) ** 2) ** 0.5
+    c1 = ((coords_1[2][0] - coords_1[0][0]) ** 2 + (coords_1[2][1] - coords_1[0][1]) ** 2) ** 0.5
+    fig1 = (a1, b1, c1)
+    fig1 = sorted(fig1)
+    a2 = ((coords_2[1][0] - coords_2[0][0]) ** 2 + (coords_2[1][1] - coords_2[0][1]) ** 2) ** 0.5
+    b2 = ((coords_2[2][0] - coords_2[1][0]) ** 2 + (coords_2[2][1] - coords_2[1][1]) ** 2) ** 0.5
+    c2 = ((coords_2[2][0] - coords_2[0][0]) ** 2 + (coords_2[2][1] - coords_2[0][1]) ** 2) ** 0.5
+    fig2 = (a2, b2, c2)
+    fig2 = sorted(fig2)
+    return fig1[0] / fig2[0] == fig1[1] / fig2[1] == fig1[2] / fig2[2]
 
 
 if __name__ == '__main__':
