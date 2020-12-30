@@ -20,11 +20,15 @@ Input: Two arguments. Both are strings.
 
 Output: Bool.
 """
+import re
 
 
 def unix_match(filename: str, pattern: str) -> bool:
-    # your code here
-    return filename == pattern
+    if pattern == filename:
+        return True
+    else:
+        re_pattern = pattern.replace('.', '\.').replace('[!', '[^').replace('*', '.*').replace('[]', ']')
+        return bool(re.match(re_pattern, filename))
 
 
 if __name__ == '__main__':
@@ -37,4 +41,7 @@ if __name__ == '__main__':
     assert unix_match('log1.txt', 'log[!0].txt') == True
     assert unix_match('log1.txt', 'log[1234567890].txt') == True
     assert unix_match('log1.txt', 'log[!1].txt') == False
+    assert unix_match('name.txt', '[]name.txt') == False
+    assert unix_match("[!]check.txt", "[!]check.txt") == True
+    assert unix_match("checkio","[c[]heckio") == True
     print("Coding complete? Click 'Check' to earn cool rewards!")
