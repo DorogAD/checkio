@@ -39,9 +39,8 @@ Output: Is it mathematically lucky or not as a boolean.
 
 
 def checkio(data):
+    pass
 
-    #replace this for solution
-    return True or False
 
 #These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
