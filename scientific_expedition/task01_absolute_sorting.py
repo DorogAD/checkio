@@ -18,9 +18,10 @@ How it is used: Sorting is a part of many tasks, so it will be useful to know ho
 
 
 def checkio(numbers_array: tuple) -> list:
-    return numbers_array
+    return sorted(numbers_array, key=lambda x: abs(x))
 
-#These "asserts" using only for self-checking and not necessary for auto-testing
+
+# These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
     print('Example:')
     print(list(checkio((-20, -5, 10, 15))))
