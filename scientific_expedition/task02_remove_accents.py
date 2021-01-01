@@ -13,8 +13,7 @@ import unicodedata
 
 
 def checkio(in_string):
-    return in_string
-
+    return unicodedata.normalize('NFD', in_string).encode('ascii', 'ignore').decode('utf-8') or in_string
 
 # These "asserts" using only for self-checking and not necessary for auto-testing
 
