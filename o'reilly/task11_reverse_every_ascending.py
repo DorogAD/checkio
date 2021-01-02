@@ -9,8 +9,16 @@ Output: Iterable
 """
 
 
-def reverse_ascending(items):
-    pass
+def reverse_ascending(items: list) -> list:
+    start = 0
+    result = []
+    items += [0]
+    for i in range(1, len(items)):
+        if items[i] <= items[i-1]:
+            result += items[start:i][::-1]
+            start = i
+    return result
+
 
 if __name__ == '__main__':
     print("Example:")
