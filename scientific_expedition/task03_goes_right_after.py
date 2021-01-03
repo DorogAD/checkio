@@ -17,8 +17,8 @@ Output: A bool.
 
 
 def goes_after(word: str, first: str, second: str) -> bool:
-    # your code here
-    return False
+    pair = first + second
+    return pair in word and word.find(first) == word.find(pair) and word.find(second) == word.find(pair) + 1
 
 
 if __name__ == '__main__':
@@ -34,4 +34,5 @@ if __name__ == '__main__':
     assert goes_after('', 'l', 'o') == False
     assert goes_after('list', 'l', 'l') == False
     assert goes_after('world', 'd', 'w') == False
+    assert goes_after('almaz', 'm', 'a') == False
     print("Coding complete? Click 'Check' to earn cool rewards!")
