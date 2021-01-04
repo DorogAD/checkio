@@ -12,7 +12,15 @@ Output: Time in a 12-hour format (as a string).
 
 
 def time_converter(time: str) -> str:
-    return str
+    if time == '00:00':
+        return '12:00 a.m.'
+    elif int(time[:2]) < 12:
+        return str(int(time[:2])) + time[2:] + ' a.m.'
+    elif int(time[:2]) < 13:
+        return str(int(time[:2])) + time[2:] + ' p.m.'
+    else:
+        return str(int(time[:2]) - 12) + time[2:] + ' p.m.'
+
 
 if __name__ == '__main__':
     print("Example:")
