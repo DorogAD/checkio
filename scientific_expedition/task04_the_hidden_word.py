@@ -20,12 +20,18 @@ Output: The coordinates of the word.
 
 def checkio(text: str, word: str) -> list:
     hor = text.lower().replace(' ', '').split('\n')
+    max_length = 0
+    for string in hor:
+        if len(string) > max_length:
+            max_length = len(string)
+    for i in range(len(hor)):
+        hor[i] = hor[i] + '0' * (max_length - len(hor[i]))
     vert = []
     vert += [''.join(j) for j in zip(*hor)]
     for i in range(len(hor)):
         if word in hor[i]:
             return [i + 1, hor[i].index(word) + 1, i + 1, hor[i].index(word) + len(word)]
-    for j in range(len(vert) - 2):
+    for j in range(len(vert)):
         if word in vert[j]:
             return [vert[j].index(word) + 1, j + 1, vert[j].index(word) + len(word), j + 1]
 
@@ -36,9 +42,9 @@ if __name__ == '__main__':
 And dreaming often, dear,
 I dreamed that, if I counted all,
 -How many would appear?""", "ten") == [2, 14, 2, 16]
-    # assert checkio("""xa
-# xb
-# x""", "ab") == [1, 2, 2, 2]
+    assert checkio("""xa
+xb
+x""", "ab") == [1, 2, 2, 2]
     assert checkio("""He took his vorpal sword in hand:
 Long time the manxome foe he sought--
 So rested he by the Tumtum tree,
