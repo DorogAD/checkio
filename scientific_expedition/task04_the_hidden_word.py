@@ -18,15 +18,27 @@ Output: The coordinates of the word.
 """
 
 
-def checkio(text, word):
-    return [1, 1, 1, 4]
+def checkio(text: str, word: str) -> list:
+    hor = text.lower().replace(' ', '').split('\n')
+    vert = []
+    vert += [''.join(j) for j in zip(*hor)]
+    for i in range(len(hor)):
+        if word in hor[i]:
+            return [i + 1, hor[i].index(word) + 1, i + 1, hor[i].index(word) + len(word)]
+    for j in range(len(vert) - 2):
+        if word in vert[j]:
+            return [vert[j].index(word) + 1, j + 1, vert[j].index(word) + len(word), j + 1]
 
-#These "asserts" using only for self-checking and not necessary for auto-testing
+
+# These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
     assert checkio("""DREAMING of apples on a wall,
 And dreaming often, dear,
 I dreamed that, if I counted all,
 -How many would appear?""", "ten") == [2, 14, 2, 16]
+    # assert checkio("""xa
+# xb
+# x""", "ab") == [1, 2, 2, 2]
     assert checkio("""He took his vorpal sword in hand:
 Long time the manxome foe he sought--
 So rested he by the Tumtum tree,
