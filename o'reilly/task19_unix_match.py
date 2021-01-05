@@ -20,10 +20,16 @@ Input: Two arguments. Both are strings.
 
 Output: Bool.
 """
+import re
 
 
 def unix_match(filename: str, pattern: str) -> bool:
-    return bool
+    if pattern == filename:
+        return True
+    else:
+        re_pattern = pattern.replace('.', '\.').replace('[!', '[^').replace('?', '.').replace('*', '.*').replace('[[]',
+            '\[').replace('[]]', '\]').replace('[.]', '\?').replace('[.*]', '\*').replace('[]', '[\s]')
+        return bool(re.match(re_pattern, filename))
 
 
 if __name__ == '__main__':
