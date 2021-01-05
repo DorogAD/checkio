@@ -11,8 +11,9 @@ from typing import Tuple
 
 
 def sum_by_types(items: list) -> Tuple[str, int]:
-    # your code here
-    return ('', 0)
+    sum_str = ''.join(string for string in items if isinstance(string, str))
+    sum_int = sum(integer for integer in items if isinstance(integer, int))
+    return sum_str, sum_int
 
 
 if __name__ == '__main__':
