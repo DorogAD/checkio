@@ -10,8 +10,16 @@ Output: The translation as a string.
 VOWELS = "aeiouy"
 
 
-def translate(phrase):
-    return phrase
+def translate(phrase: str) -> str:
+    for letter in VOWELS:
+        phrase = phrase.replace(letter * 3, letter)
+    result = ''
+    for i in range(len(phrase)):
+        if phrase[i] not in VOWELS:
+            result += phrase[i]
+        elif phrase[i - 1] in VOWELS or phrase[i - 1] == ' ':
+            result += phrase[i]
+    return result
 
 
 if __name__ == '__main__':
