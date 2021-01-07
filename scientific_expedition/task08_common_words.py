@@ -12,8 +12,11 @@ Output: The common words as a string.
 
 
 def checkio(line1: str, line2: str) -> str:
-    # your code here
-    return ''
+    set1 = set(line1.split(','))
+    set2 = set(line2.split(','))
+    inter_set = set1.intersection(set2)
+    result = sorted(inter_set)
+    return ','.join(result)
 
 
 if __name__ == '__main__':
