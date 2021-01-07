@@ -22,9 +22,14 @@ Output: A tuple (or list) of two ints
 """
 
 
-def follow(instructions):
-    # your code here
-    return (0, 0)
+def follow(instructions: str) -> tuple:
+    forward = instructions.count('f')
+    backward = instructions.count('b')
+    left = instructions.count('l')
+    right = instructions.count('r')
+    x = forward - backward
+    y = right - left
+    return y, x
 
 
 if __name__ == '__main__':
