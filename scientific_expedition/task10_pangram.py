@@ -12,12 +12,15 @@ Output: Whether the sentence is a pangram or not as a boolean.
 """
 
 
-def check_pangram(text):
-    '''
+def check_pangram(text: str) -> bool:
+    """
         is the given text is a pangram.
-    '''
-    # your code here
-    return True or False
+    """
+    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+                'v', 'w', 'x', 'y', 'z']
+    result = [i.lower() for i in text if i.isalpha()]
+    result = sorted(list(set(result)))
+    return result == alphabet
 
 
 if __name__ == '__main__':
