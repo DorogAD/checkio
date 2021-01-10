@@ -14,15 +14,24 @@ Output: The most frequent letter in lower case as a string.
 
 
 def checkio(text: str) -> str:
+    result = ''
+    count = 0
+    text = text.lower()
+    for letter in text:
+        if text.count(letter) > count and letter.isalpha():
+            count = text.count(letter)
+            result = letter
+        elif text.count(letter) == count and letter < result and letter.isalpha():
+            count = text.count(letter)
+            result = letter
+    return result
 
-    #replace this for solution
-    return 'a'
 
 if __name__ == '__main__':
     print("Example:")
     print(checkio("Hello World!"))
 
-    #These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking and not necessary for auto-testing
     assert checkio("Hello World!") == "l", "Hello test"
     assert checkio("How do you do?") == "o", "O is most wanted"
     assert checkio("One") == "e", "All letter only once."
