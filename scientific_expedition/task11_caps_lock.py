@@ -12,8 +12,14 @@ Output: A string. The showed text after being typed.
 
 
 def caps_lock(text: str) -> str:
-    # your code here
-    return None
+    result = ''
+    case = False
+    for letter in text:
+        if letter == 'a':
+            case = not case
+            continue
+        result = result + letter.upper() if case else result + letter
+    return result
 
 
 if __name__ == '__main__':
