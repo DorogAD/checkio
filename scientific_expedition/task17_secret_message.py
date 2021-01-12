@@ -15,8 +15,11 @@ Output: The secret message as a string or an empty string.
 
 
 def find_message(message: str) -> str:
-    # your code here
-    return None
+    result = ''
+    for letter in message:
+        if letter.isupper():
+            result += letter
+    return result
 
 
 if __name__ == '__main__':
