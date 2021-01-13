@@ -18,10 +18,29 @@ Input: A string of characters () {} []
 
 Output: A string of characters () {} []
 """
+import re
 
 
 def remove_brackets(line: str) -> str:
-    # your code here
+    r_br1, r_br2 = line.count('('), line.count(')')
+    s_br1, s_br2 = line.count('['), line.count(']')
+    f_br1, f_br2 = line.count('{'), line.count('}')
+    if r_br1 > r_br2:
+        line = line.replace('(' * (r_br1 - r_br2), '', 1)
+    elif r_br1 < r_br2:
+        line = line.replace(')' * (r_br2 - r_br1), '', 1)
+    if s_br1 > s_br2:
+        line = line.replace('[' * (s_br1 - s_br2), '', 1)
+    elif s_br1 < s_br2:
+        line = line.replace(']' * (s_br2 - s_br1), '', 1)
+    if f_br1 > f_br2:
+        line = line.replace('{' * (f_br1 - f_br2), '', 1)
+    elif f_br1 < f_br2:
+        line = line.replace('}' * (f_br2 - f_br1), '', 1)
+    if re.search('\(.*?\)', line) != None:
+        if len(re.search('\(.*?\)', line).group()) % 2 == 1:
+            line = line.replace('[', '', 1)
+            line = line.replace(']', '', 1)
     return line
 
 
