@@ -1,6 +1,6 @@
 # checkio
 
-This repository contains solved tasks by Python coding from site www.checkio.org
+This repository contains completed Python coding tasks from the site www.checkio.org
 
 Each folder is an island with tasks.
 
