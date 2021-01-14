@@ -48,9 +48,19 @@ Output: An object.
 """
 
 
-def yaml(a):
-    # your code here
-    return None
+def yaml(a: str) -> dict:
+    result = {}
+    for pair in a.split('\n'):
+        if pair == '':
+            continue
+        else:
+            result_key, result_value = pair.split(':')
+            result_key = result_key.strip()
+            result_value = result_value.strip()
+            if result_value.isdigit():
+                result_value = int(result_value)
+            result[result_key] = result_value
+    return result
 
 
 if __name__ == '__main__':
