@@ -9,11 +9,11 @@ Input: A string.
 
 Output: An iterable.
 """
+import re
 
 
-def find_quotes(a):
-    # your code here
-    return None
+def find_quotes(a: str) -> iter:
+    return [''] if '""' in a else [i.strip('"') for i in re.findall('\".+?\"', a)]
 
 
 if __name__ == '__main__':
