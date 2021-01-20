@@ -11,12 +11,22 @@ Output: Are these drones related or not as a boolean.
 """
 
 
-def check_connection(network, first, second):
-    return True or False
+def check_connection(network: iter, first: str, second: str) -> bool:
+    for element in network:
+        if first in element.split('-') and second in element.split('-'):
+            return True
+        if first in element.split('-'):
+            cut_network = list(network)
+            cut_network.remove(element)
+            if first == element.split('-')[0]:
+                return check_connection(cut_network, element.split('-')[1], second)
+            else:
+                return check_connection(cut_network, element.split('-')[0], second)
+    return False
 
 
 if __name__ == '__main__':
-    #These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking and not necessary for auto-testing
     assert check_connection(
         ("dr101-mr99", "mr99-out00", "dr101-out00", "scout1-scout2",
          "scout3-scout1", "scout1-scout4", "scout4-sscout", "sscout-super"),
