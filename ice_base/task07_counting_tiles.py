@@ -12,11 +12,24 @@ Output: The quantities whole and partial tiles as a list with two integers -- [s
 """
 
 
-def checkio(radius):
+def checkio(radius: float) -> list:
     """count tiles"""
-    return [0, 0]
+    maximum = int(radius // 1 + 1)
+    coordinates = []
+    for i in range(maximum):
+        for j in range(maximum):
+            coordinates.append([i, j])
+    whole = 0
+    partial = 0
+    for coordinate in coordinates:
+        if ((coordinate[0] + 1) ** 2 + (coordinate[1] + 1) ** 2) ** 0.5 < radius:
+            whole += 1
+        if (coordinate[0] ** 2 + coordinate[1] ** 2) ** 0.5 < radius:
+            partial += 1
+    return [whole * 4, partial * 4 - whole * 4]
 
-#These "asserts" using only for self-checking and not necessary for auto-testing
+
+# These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
     assert checkio(2) == [4, 12], "N=2"
     assert checkio(3) == [16, 20], "N=3"
