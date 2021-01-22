@@ -19,17 +19,23 @@ MORSE = {'a': '.-',    'b': '-...',  'c': '-.-.',
          '1': '.----', '2': '..---', '3': '...--',
          '4': '....-', '5': '.....', '6': '-....',
          '7': '--...', '8': '---..', '9': '----.'
-        }
+         }
 
-def morse_encoder(text):
-    #replace this for solution
-    return text
+
+def morse_encoder(text: str) -> str:
+    result = ''
+    for word in text.split():
+        for letter in word.lower():
+            result += MORSE[letter] + ' '
+        result += '  '
+    return result.strip()
+
 
 if __name__ == '__main__':
     print("Example:")
     print(morse_encoder('some text'))
 
-    #These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking and not necessary for auto-testing
     assert morse_encoder("some text") == "... --- -- .   - . -..- -"
     assert morse_encoder("2018") == "..--- ----- .---- ---.."
     assert morse_encoder("It was a good day") == ".. -   .-- .- ...   .-   --. --- --- -..   -.. .- -.--"
