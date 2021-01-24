@@ -15,7 +15,11 @@ Output: The number of words in the text as an integer.
 
 
 def count_words(text: str, words: set) -> int:
-    return 0
+    count = 0
+    for word in words:
+        if word in text.lower():
+            count += 1
+    return count
 
 
 if __name__ == '__main__':
