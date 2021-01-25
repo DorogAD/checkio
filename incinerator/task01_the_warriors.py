@@ -17,16 +17,32 @@ anymore), the function should return True, False otherwise.
 
 
 class Warrior:
-    pass
+    def __init__(self):
+        self.health = 50
+        self.attack = 5
+        self.is_alive = True
+
 
 class Knight(Warrior):
-    pass
+    def __init__(self):
+        super().__init__()
+        self.attack = 7
+
 
 def fight(unit_1, unit_2):
-    return 0
+    while unit_1.is_alive or unit_2.is_alive:
+        unit_2.health -= unit_1.attack
+        if unit_2.health <= 0:
+            unit_2.is_alive = False
+            return unit_1.is_alive
+        unit_1.health -= unit_2.attack
+        if unit_1.health <= 0:
+            unit_1.is_alive = False
+            return unit_1.is_alive
+
 
 if __name__ == '__main__':
-    #These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking and not necessary for auto-testing
 
     chuck = Warrior()
     bruce = Warrior()
