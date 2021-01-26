@@ -9,16 +9,25 @@ Input: Start and end date as datetime.date.
 
 Output: The quantity of the rest days as an integer.
 """
-from datetime import date
+from datetime import date, timedelta
 
 
-def checkio(from_date, to_date):
+def checkio(from_date: date, to_date: date) -> int:
     """
         Count the days of rest
     """
-    return 0
+    result = 0
+    while True:
+        if from_date.weekday() == 5 or from_date.weekday() == 6:
+            result += 1
+        if from_date == to_date:
+            break
+        else:
+            from_date += timedelta(days=1)
+    return result
 
-#These "asserts" using only for self-checking and not necessary for auto-testing
+
+# These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
     assert checkio(date(2013, 9, 18), date(2013, 9, 23)) == 2, "1st example"
     assert checkio(date(2013, 1, 1), date(2013, 2, 1)) == 8, "2nd example"
