@@ -8,16 +8,20 @@ Input: The lengths of the sides of a triangle as integers.
 
 Output: Angles of a triangle in degrees as sorted list of integers.
 """
-
-
 from typing import List
+import math
+
 
 def checkio(a: int, b: int, c: int) -> List[int]:
-
-    #replace this for solution
+    if a + b > c and b + c > a and a + c > b:
+        angle_1 = round(math.degrees(math.acos((a * a + b * b - c * c) / (2 * a * b))), 0)
+        angle_2 = round(math.degrees(math.acos((b * b + c * c - a * a) / (2 * b * c))), 0)
+        angle_3 = round(math.degrees(math.acos((c * c + a * a - b * b) / (2 * c * a))), 0)
+        return sorted([int(angle_1), int(angle_2), int(angle_3)])
     return [0, 0, 0]
 
-#These "asserts" using only for self-checking and not necessary for auto-testing
+
+# These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
     print("Example:")
     print(checkio(4, 4, 4))
