@@ -10,17 +10,25 @@ Input: The first day of the vacation and the number of days in it.
 
 Output: The date of the first working day.
 """
+from datetime import date, timedelta
 
 
-def vacation(date, days):
-    #replace this for solution
-    return 0
+def vacation(start_date, days):
+    list_date = [int(i) for i in start_date.split('-')]
+    work_day = date(list_date[0], list_date[1], list_date[2]) + timedelta(days=days)
+    if work_day.weekday() == 5:
+        return str(work_day + timedelta(days=2))
+    elif work_day.weekday() == 6:
+        return str(work_day + timedelta(days=1))
+    else:
+        return str(work_day)
+
 
 if __name__ == '__main__':
     print("Example:")
     print(vacation('2018-07-01', 14))
 
-    #These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking and not necessary for auto-testing
     assert vacation('2018-07-01', 14) == '2018-07-16'
     assert vacation('2018-02-19', 10) == '2018-03-01'
     assert vacation('2000-02-28', 5) == '2000-03-06'
