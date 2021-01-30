@@ -25,7 +25,7 @@ Output: The Roman numeral as a string.
 """
 
 
-def roman_decode(number, first, second, third):
+def roman_decode(number: int, first: str, second: str, third: str) -> str:
     main = ''
     additional = ''
     if number > 8:
@@ -49,7 +49,7 @@ def roman_decode(number, first, second, third):
         return main + additional
 
 
-def checkio(data):
+def checkio(data: int) -> str:
     result = ''
     if data // 1000:
         result += roman_decode(data // 1000, 'M', 'Z', 'Y')
