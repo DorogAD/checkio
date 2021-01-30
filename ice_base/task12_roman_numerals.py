@@ -25,13 +25,45 @@ Output: The Roman numeral as a string.
 """
 
 
-def checkio(data):
+def roman_decode(number, first, second, third):
+    main = ''
+    additional = ''
+    if number > 8:
+        main = third
+        additional = first
+    elif 3 < number < 9:
+        main = second
+        additional = first
+    elif number < 4:
+        main = ''
+        additional = first
+    if number == 10 or number == 5:
+        return main
+    elif number == 9 or number == 4:
+        return additional + main
+    elif number == 8 or number == 3:
+        return main + additional + additional + additional
+    elif number == 7 or number == 2:
+        return main + additional + additional
+    elif number == 6 or number == 1:
+        return main + additional
 
-    #replace this for solution
-    return ""
+
+def checkio(data):
+    result = ''
+    if data // 1000:
+        result += roman_decode(data // 1000, 'M', 'Z', 'Y')
+    if data % 1000 // 100:
+        result += roman_decode(data % 1000 // 100, 'C', 'D', 'M')
+    if data % 100 // 10:
+        result += roman_decode(data % 100 // 10, 'X', 'L', 'C')
+    if data % 10:
+        result += roman_decode(data % 10, 'I', 'V', 'X')
+    return result
+
 
 if __name__ == '__main__':
-    #These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking and not necessary for auto-testing
     assert checkio(6) == 'VI', '6'
     assert checkio(76) == 'LXXVI', '76'
     assert checkio(499) == 'CDXCIX', '499'
