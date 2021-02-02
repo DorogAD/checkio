@@ -15,8 +15,19 @@ from typing import List
 
 
 def cheapest_flight(costs: List, a: str, b: str) -> int:
-    # your code here
-    return None
+    result = 0
+    current = 0
+    for number, element in enumerate(costs):
+        for start, finish in (element[0], element[1]), (element[1], element[0]):
+            if start == a and finish == b:
+                current = element[2]
+            elif start == a and finish != b:
+                current = cheapest_flight(costs[:number] + costs[number + 1:], finish, b)
+                if current != 0:
+                    current += element[2]
+        if current < result or result == 0:
+            result = current
+    return result
 
 
 if __name__ == '__main__':
