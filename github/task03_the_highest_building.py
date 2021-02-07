@@ -9,9 +9,15 @@ building numbers starts from "1", not from "0")
 """
 
 
-def highest_building(buildings):
-    # replace this for solution
-    return 0
+def highest_building(buildings: list) -> list:
+    highest_number = 0
+    floors = 0
+    for num in range(len(buildings[0])):
+        building = [row[num] for row in buildings]
+        if sum(building) > floors:
+            highest_number = num + 1
+            floors = sum(building)
+    return [highest_number, floors]
 
 
 if __name__ == '__main__':
